@@ -27,6 +27,48 @@
     });
   }
 
+  // ---- smooth inertial scroll (desktop, pointer-fine, motion allowed) ----
+  var canSmooth = window.matchMedia('(pointer:fine)').matches &&
+                  window.innerWidth >= 1024 &&
+                  !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (canSmooth) {
+    var docEl = document.documentElement;
+    docEl.style.scrollBehavior = 'auto'; // мы управляем скроллом сами
+    var sTarget = window.scrollY, sCurrent = window.scrollY, sAnimating = false;
+    var EASE = 0.09;
+    var maxScroll = function () { return Math.max(0, docEl.scrollHeight - window.innerHeight); };
+    var sClamp = function (v) { return Math.max(0, Math.min(v, maxScroll())); };
+    var sLoop = function () {
+      var diff = sTarget - sCurrent;
+      if (Math.abs(diff) < 0.4) { sCurrent = sTarget; window.scrollTo(0, Math.round(sCurrent)); sAnimating = false; return; }
+      sCurrent += diff * EASE;
+      window.scrollTo(0, Math.round(sCurrent));
+      requestAnimationFrame(sLoop);
+    };
+    var sStart = function () { if (!sAnimating) { sAnimating = true; requestAnimationFrame(sLoop); } };
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey || e.deltaY === 0) return; // не мешаем zoom / горизонтали
+      e.preventDefault();
+      var unit = e.deltaMode === 1 ? 24 : (e.deltaMode === 2 ? window.innerHeight : 1);
+      sTarget = sClamp((sAnimating ? sTarget : window.scrollY) + e.deltaY * unit);
+      sStart();
+    }, { passive: false });
+    window.addEventListener('scroll', function () { if (!sAnimating) { sCurrent = sTarget = window.scrollY; } }, { passive: true });
+    window.addEventListener('resize', function () { sTarget = sClamp(sTarget); });
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        var el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        sTarget = sClamp(window.scrollY + el.getBoundingClientRect().top - 72);
+        sStart();
+        if (history.replaceState) history.replaceState(null, '', id);
+      });
+    });
+  }
+
   // ---- reveal on scroll ----
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
