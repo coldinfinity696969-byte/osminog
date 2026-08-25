@@ -560,8 +560,8 @@ h2{font-size:clamp(28px,4.4vw,48px)}
    ПРОИЗВОДИТЕЛЬНОСТЬ + ПРЕМИУМ-ФИШКИ (раунд 5)
    ============================================================ */
 /* --- GPU-слои для анимируемого/тяжёлого, чтобы не было фризов --- */
-.hero-video,.hero-poster{transform:scaleX(-1) scale(1.16) translateX(8%) translateZ(0);backface-visibility:hidden;transform-origin:center}
-@media (max-width:900px){.hero-video,.hero-poster{transform:scaleX(-1) scale(1.05) translateX(3%) translateZ(0)}}
+.hero-video,.hero-poster{transform:translateZ(0);backface-visibility:hidden}
+@media (max-width:900px){.hero-media .hero-poster,.hero-media .hero-video{object-position:74% center}}
 .marquee{will-change:transform;transform:translateZ(0)}
 .bg-fx .glow{filter:blur(80px)}
 

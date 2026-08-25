@@ -35,7 +35,8 @@
     var docEl = document.documentElement;
     docEl.style.scrollBehavior = 'auto'; // мы управляем скроллом сами
     var sTarget = window.scrollY, sCurrent = window.scrollY, sAnimating = false;
-    var EASE = 0.09;
+    var EASE = 0.07;      // ниже = дольше «глайд» / сильнее инерция
+    var STEP = 1.25;      // множитель хода за один прокрут колеса
     var maxScroll = function () { return Math.max(0, docEl.scrollHeight - window.innerHeight); };
     var sClamp = function (v) { return Math.max(0, Math.min(v, maxScroll())); };
     var sLoop = function () {
@@ -50,7 +51,7 @@
       if (e.ctrlKey || e.deltaY === 0) return; // не мешаем zoom / горизонтали
       e.preventDefault();
       var unit = e.deltaMode === 1 ? 24 : (e.deltaMode === 2 ? window.innerHeight : 1);
-      sTarget = sClamp((sAnimating ? sTarget : window.scrollY) + e.deltaY * unit);
+      sTarget = sClamp((sAnimating ? sTarget : window.scrollY) + e.deltaY * unit * STEP);
       sStart();
     }, { passive: false });
     window.addEventListener('scroll', function () { if (!sAnimating) { sCurrent = sTarget = window.scrollY; } }, { passive: true });
