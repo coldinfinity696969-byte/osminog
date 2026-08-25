@@ -113,6 +113,63 @@
     }
   }
 
+  // ---- scroll progress bar ----
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  var barTicking = false;
+  var updateBar = function () {
+    var st = window.scrollY;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? (st / h) * 100 : 0) + '%';
+    barTicking = false;
+  };
+  window.addEventListener('scroll', function () {
+    if (!barTicking) { barTicking = true; requestAnimationFrame(updateBar); }
+  }, { passive: true });
+  updateBar();
+
+  // ---- count-up numbers (12+, 100+, 500+, 3000+ ...) ----
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var animateCount = function (el) {
+    var m = /^(\d[\d\s]*)(.*)$/.exec(el.textContent.trim());
+    if (!m) return;
+    var target = parseInt(m[1].replace(/\s/g, ''), 10);
+    var suffix = m[2] || '';
+    if (isNaN(target) || target < 10) return;
+    if (reduceMotion) { el.textContent = target + suffix; return; }
+    var dur = 1400, start = 0, t0 = null;
+    var step = function (ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 4); // easeOutQuart
+      el.textContent = Math.round(start + (target - start) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(step);
+  };
+  var numEls = document.querySelectorAll('.stat .num, .exp .num');
+  if ('IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animateCount(e.target); nio.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    numEls.forEach(function (el) { nio.observe(el); });
+  }
+
+  // ---- cursor spotlight on cards ----
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('pointermove', function (e) {
+      var card = e.target.closest && e.target.closest('.pcard, .bcard');
+      if (!card) return;
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }, { passive: true });
+  }
+
   // ---- year ----
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

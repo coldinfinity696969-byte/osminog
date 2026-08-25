@@ -555,3 +555,40 @@ h2{font-size:clamp(28px,4.4vw,48px)}
 @media (prefers-reduced-motion:reduce){
   .bg-fx .glow,.hv-orb,.hv-ring,.hv-win,.hv-chip,.sc-dot{animation:none !important}
 }
+
+/* ============================================================
+   ПРОИЗВОДИТЕЛЬНОСТЬ + ПРЕМИУМ-ФИШКИ (раунд 5)
+   ============================================================ */
+/* --- GPU-слои для анимируемого/тяжёлого, чтобы не было фризов --- */
+.hero-video,.hero-poster{transform:scaleX(-1) scale(1.16) translateX(8%) translateZ(0);backface-visibility:hidden;transform-origin:center}
+@media (max-width:900px){.hero-video,.hero-poster{transform:scaleX(-1) scale(1.05) translateX(3%) translateZ(0)}}
+.marquee{will-change:transform;transform:translateZ(0)}
+.bg-fx .glow{filter:blur(80px)}
+
+/* --- content-visibility: не рендерим то, что за экраном → плавнее скролл --- */
+#services,#process,#cases,#reviews,#expertise,#team,#niches,
+#guarantees,#contact,#faq,.logos-band,.value{
+  content-visibility:auto;contain-intrinsic-size:auto 720px;
+}
+
+/* --- прогресс-бар скролла (тонкая линия сверху) --- */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:200;
+  background:var(--grad);box-shadow:0 0 12px rgba(91,140,255,.6);
+  transition:width .08s linear;pointer-events:none}
+
+/* --- анимированный градиент на акцентных словах hero --- */
+.hero h1 .grad-text{background-size:220% 100%;animation:gradflow 7s ease infinite}
+@keyframes gradflow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* --- «прожектор» под курсором на карточках --- */
+.pcard,.bcard{position:relative;isolation:isolate}
+.pcard::after,.bcard::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  opacity:0;transition:opacity .3s;pointer-events:none;
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),rgba(91,140,255,.14),transparent 60%)}
+.pcard:hover::after,.bcard:hover::after{opacity:1}
+
+/* motion off — глушим и новые анимации */
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .grad-text{animation:none}
+  .scroll-progress{transition:none}
+}
