@@ -586,3 +586,30 @@ h2{font-size:clamp(28px,4.4vw,48px)}
   .hero h1 .grad-text{animation:none}
   .scroll-progress{transition:none}
 }
+
+/* ============================================================
+   МОБИЛЬНЫЕ ПРАВКИ (раунд 7): грид-оверфлоу, hero, длинные слова
+   ============================================================ */
+/* фикс: длинные слова распирали колонки грида → плашки «уезжали» вправо */
+.benefits-grid>*,.pricing-grid>*,.steps>*,.guar-grid>*,.exp-grid>*,
+.cases-grid>*,.niche-grid>*,.hero-stats>*,.team-grid>*{min-width:0}
+.bcard h3,.bcard p,.pcard h3,.pcard .desc,.step h4,.step p,
+.guar h4,.guar p,.exp p,.niche span,.case .cname,.case .cdesc{overflow-wrap:break-word}
+/* цена «индивидуально» не влезала — уменьшаем и разрешаем перенос */
+.pcard .price b{font-size:clamp(24px,6.4vw,34px);overflow-wrap:break-word}
+
+/* мобильный hero: изображение вместо видео + object-position под осьминога */
+@media (max-width:900px){
+  .hero-media .hero-poster,.hero-media .hero-video{object-position:72% center}
+}
+
+/* мобильный hero: меньше текста, чёткое разделение, «дышит» картинка */
+@media (max-width:600px){
+  .hero{min-height:88svh}
+  .hero h1{font-size:clamp(29px,8.2vw,38px);line-height:1.08;max-width:15ch}
+  .hero .lead{margin-top:20px;font-size:15px;line-height:1.5;color:#aab3c2;max-width:34ch}
+  .lead-more{display:none}                 /* на мобилке — короткий подзаголовок */
+  .hero-actions{margin-top:30px;gap:12px}
+  .hero-badge{margin-bottom:20px}
+  .hero .hero-stats{margin-top:clamp(34px,9vw,48px)}
+}
