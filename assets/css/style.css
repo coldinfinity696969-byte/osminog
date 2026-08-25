@@ -28,8 +28,8 @@
   --shadow:   0 24px 60px -24px rgba(0,0,0,.7);
   --shadow-accent: 0 20px 60px -20px rgba(91,140,255,.5);
 
-  --maxw: 1320px;
-  --gutter: clamp(20px,5vw,56px);
+  --maxw: 1520px;
+  --gutter: clamp(22px,4.5vw,64px);
   --sp: clamp(72px,10vw,132px); /* section vertical padding */
 
   --font: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -143,7 +143,7 @@ h2{font-size:clamp(28px,4.4vw,48px)}
   linear-gradient(90deg,rgba(8,9,13,.96) 0%,rgba(8,9,13,.8) 28%,rgba(8,9,13,.3) 56%,rgba(8,9,13,.5) 100%),
   linear-gradient(180deg,rgba(8,9,13,.72) 0%,rgba(8,9,13,0) 18%,rgba(8,9,13,0) 52%,rgba(8,9,13,.93) 100%)}
 .hero-content{position:relative;z-index:2;width:100%;display:flex;flex-direction:column}
-.hero-copy{max-width:640px;margin-top:auto}
+.hero-copy{max-width:780px;margin-top:auto}
 .hero .hero-stats{margin-top:auto}
 .hero .hero-stats .stat{background:rgba(11,13,19,.5);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .hero-badge{
@@ -152,8 +152,9 @@ h2{font-size:clamp(28px,4.4vw,48px)}
   background:var(--surface);font-size:13.5px;color:var(--muted);margin-bottom:26px;
 }
 .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 4px rgba(34,211,238,.18)}
-.hero h1{font-size:clamp(33px,4.9vw,60px);max-width:15ch;line-height:1.08}
-.hero .lead{margin-top:24px;font-size:clamp(16px,1.5vw,19px);color:var(--muted);max-width:52ch}
+.hero h1{font-size:clamp(38px,5.8vw,78px);max-width:17ch;line-height:1.04;font-weight:700}
+.hero h1 .grad-text{font-weight:700;filter:drop-shadow(0 6px 34px rgba(91,140,255,.45));padding-right:.04em}
+.hero .lead{margin-top:26px;font-size:clamp(17px,1.55vw,20px);color:#c3cad8;max-width:56ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
 
 /* --- hero bespoke visual --- */
