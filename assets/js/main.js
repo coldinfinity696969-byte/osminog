@@ -96,6 +96,23 @@
     });
   }
 
+  // ---- hero background video (desktop only, respects reduced motion) ----
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (window.innerWidth >= 768 && !reduce) {
+      heroVideo.setAttribute('preload', 'auto');
+      var startHero = function () {
+        var p = heroVideo.play();
+        if (p && p.then) p.then(function () { heroVideo.classList.add('ready'); }).catch(function () {});
+        else heroVideo.classList.add('ready');
+      };
+      heroVideo.addEventListener('loadeddata', function () { heroVideo.classList.add('ready'); startHero(); });
+      heroVideo.load();
+      if (heroVideo.readyState >= 2) startHero();
+    }
+  }
+
   // ---- year ----
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

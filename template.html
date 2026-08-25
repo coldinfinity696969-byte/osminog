@@ -56,32 +56,23 @@
 
 <!-- ===================== HERO ===================== -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <div class="hero-badge reveal"><span class="dot"></span>{{HERO_BADGE}}</div>
-        <h1 class="reveal d1">{{H1}}</h1>
-        <p class="lead reveal d2">{{LEAD}}</p>
-        <div class="hero-actions reveal d3">
-          <a href="#contact" class="btn btn-primary btn-lg">{{HERO_PRIMARY}}
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="#services" class="btn btn-ghost btn-lg">Смотреть услуги и цены</a>
-        </div>
-      </div>
-      <div class="hero-visual reveal d2" aria-hidden="true">
-        <div class="hv-orb"></div>
-        <div class="hv-ring"></div>
-        <div class="hv-win">
-          <div class="bar"><i></i><i></i><i></i><div class="url"></div></div>
-          <div class="screen">
-            <div class="hb"></div>
-            <div class="ln"></div><div class="ln"></div><div class="ln s"></div>
-            <div class="btnf"></div>
-          </div>
-        </div>
-        <div class="hv-chip c1"><span class="g"></span>Новая заявка</div>
-        <div class="hv-chip c2"><span class="mini"><b style="height:8px"></b><b style="height:13px"></b><b style="height:20px"></b></span>Заявки с сайта</div>
+  <div class="hero-media" aria-hidden="true">
+    <img class="hero-poster" src="{{ROOT}}assets/video/hero-octopus-poster.jpg" alt="">
+    <video class="hero-video" poster="{{ROOT}}assets/video/hero-octopus-poster.jpg" muted loop playsinline preload="none">
+      <source src="{{ROOT}}assets/video/hero-octopus.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-copy">
+      <div class="hero-badge"><span class="dot"></span>{{HERO_BADGE}}</div>
+      <h1>{{H1}}</h1>
+      <p class="lead">{{LEAD}}</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">{{HERO_PRIMARY}}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#services" class="btn btn-ghost btn-lg">Смотреть услуги и цены</a>
       </div>
     </div>
     <div class="hero-stats">
