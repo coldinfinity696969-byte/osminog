@@ -657,3 +657,22 @@ h2{font-size:clamp(28px,4.4vw,48px)}
 .case-card.hide{display:none}
 @media (max-width:1024px){.cases-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.cases-grid{grid-template-columns:1fr}.cf{padding:9px 15px;font-size:13px}}
+
+/* ============================================================
+   ПРЕМИУМ-ИКОНКИ: градиентный штрих + дорогие плитки (раунд 8)
+   ============================================================ */
+.bcard .ic svg,.guar .ic svg,.niche .nic svg,.cmethod .ic svg{stroke:url(#ig)}
+.bcard .ic,.guar .ic,.cmethod .ic,.niche .nic{
+  background:
+    linear-gradient(150deg,rgba(34,211,238,.10),rgba(139,92,255,.08)) padding-box,
+    linear-gradient(150deg,rgba(34,211,238,.55),rgba(91,140,255,.4),rgba(139,92,255,.5)) border-box;
+  border:1px solid transparent;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  transition:box-shadow .35s,transform .35s;
+}
+.bcard:hover .ic,.guar:hover .ic,.cmethod:hover .ic{
+  box-shadow:0 12px 30px -8px rgba(91,140,255,.5),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.bcard:hover .ic{transform:translateY(-2px) scale(1.04)}
+.niche.active .nic{background:rgba(255,255,255,.14);border-color:transparent}
+.niche.active .nic svg{stroke:#eef3ff}
