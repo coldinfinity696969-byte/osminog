@@ -124,15 +124,29 @@
       var phonev = (form.phone.value || '').trim();
       var msg = (form.message.value || '').trim();
       var niche = form.getAttribute('data-niche') || 'сайт';
-      var subject = 'Заявка с лендинга OSMINOG (' + niche + ')';
-      var body =
-        'Имя: ' + name + '\n' +
-        'Телефон: ' + phonev + '\n' +
-        'Задача: ' + (msg || '—') + '\n\n' +
-        'Отправлено с посадочной: ' + location.href;
-      // open mail client with prefilled data
-      window.location.href = 'mailto:info@osminog.biz?subject=' +
-        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var endpoint = form.getAttribute('data-endpoint');
+
+      var openMailto = function () {
+        var subject = 'Заявка с лендинга OSMINOG (' + niche + ')';
+        var body =
+          'Имя: ' + name + '\n' +
+          'Телефон: ' + phonev + '\n' +
+          'Задача: ' + (msg || '—') + '\n\n' +
+          'Отправлено с посадочной: ' + location.href;
+        window.location.href = 'mailto:info@osminog.biz?subject=' +
+          encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      };
+
+      if (endpoint) {
+        // отправляем в Битрикс24 + Telegram через Worker
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, phone: phonev, message: msg, niche: niche, page: location.href })
+        }).catch(function () { openMailto(); });
+      } else {
+        openMailto();
+      }
       // show success state
       form.querySelector('.form-fields').style.display = 'none';
       form.querySelector('.form-ok').classList.add('show');
