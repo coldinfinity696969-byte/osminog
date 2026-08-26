@@ -213,6 +213,22 @@
     }, { passive: true });
   }
 
+  // ---- cases filter ----
+  var caseFilters = document.querySelectorAll('.cf');
+  if (caseFilters.length) {
+    var caseCards = document.querySelectorAll('.case-card');
+    caseFilters.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        caseFilters.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.getAttribute('data-filter');
+        caseCards.forEach(function (c) {
+          c.classList.toggle('hide', !(f === 'all' || c.getAttribute('data-cat') === f));
+        });
+      });
+    });
+  }
+
   // ---- year ----
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();

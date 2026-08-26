@@ -60,11 +60,35 @@ REPL = {
     "{{NICHE_NAME}}": "niche_name",
 }
 
+# ---- КЕЙСЫ: реальные проекты (домен = ссылка, скрин в assets/cases/<slug>.webp) ----
+CASES = [
+    ("landing", "Лендинг",       ["blesk-i-poryadok.ru", "ochumelych.ru", "prima-merch.ru", "semservis.ru"]),
+    ("info",    "Информационный", ["axmedovlk.ru", "opora.ru", "buyingbusinesstravel.com.ru", "yakutskcity.ru"]),
+    ("corp",    "Корпоративный",  ["foresthouse24.ru", "masloff.ru", "gis-mining.ru", "aosngs.ru"]),
+    ("catalog", "Каталог",        ["etln-rcw.ru", "tonybrands.ru", "dom-karkas55.ru", "eurasia-autocenter.ru"]),
+    ("shop",    "Магазин",        ["jetupack.ru", "bonkombinezon.ru", "truckparts-chelny.ru", "epldiamond.ru"]),
+]
+
+def build_case_cards():
+    cards = []
+    for cat, label, domains in CASES:
+        for domain in domains:
+            slug = domain.replace(".", "-")
+            cards.append(
+                '      <a class="case-card reveal" data-cat="%s" href="https://%s" target="_blank" rel="noopener">'
+                '<div class="case-shot"><img src="{{ROOT}}assets/cases/%s.webp" loading="lazy" alt="Сайт %s"></div>'
+                '<div class="case-meta"><span class="case-domain">%s</span><span class="case-tag">%s</span></div></a>'
+                % (cat, domain, slug, domain, domain, label)
+            )
+    return "\n".join(cards)
+
+CASE_CARDS = build_case_cards()
+
 with open(os.path.join(ROOT_DIR, "template.html"), encoding="utf-8") as f:
     tpl = f.read()
 
 for n in NICHES:
-    html = tpl
+    html = tpl.replace("{{CASE_CARDS}}", CASE_CARDS)
     for token, key in REPL.items():
         html = html.replace(token, n[key])
     out_path = os.path.join(ROOT_DIR, n["out"])

@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/style.css?v=11">
+<link rel="stylesheet" href="../assets/css/style.css?v=12">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b8cff'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='700' fill='%23070810' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 </head>
 <body data-niche="" data-featured="magazin">
@@ -58,11 +58,11 @@
 <section class="hero">
   <div class="hero-media" aria-hidden="true">
     <picture>
-      <source media="(max-width:900px)" srcset="../assets/video/hero-octopus-mobile.webp?v=11">
-      <img class="hero-poster" src="../assets/video/hero-octopus-poster.jpg?v=11" alt="">
+      <source media="(max-width:900px)" srcset="../assets/video/hero-octopus-mobile.webp?v=12">
+      <img class="hero-poster" src="../assets/video/hero-octopus-poster.jpg?v=12" alt="">
     </picture>
-    <video class="hero-video" poster="../assets/video/hero-octopus-poster.jpg?v=11" muted loop playsinline preload="none">
-      <source src="../assets/video/hero-octopus.mp4?v=11" type="video/mp4">
+    <video class="hero-video" poster="../assets/video/hero-octopus-poster.jpg?v=12" muted loop playsinline preload="none">
+      <source src="../assets/video/hero-octopus.mp4?v=12" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
   </div>
@@ -250,17 +250,39 @@
 <section class="section" id="cases">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Кейсы и клиенты</span>
+      <span class="eyebrow">Кейсы</span>
       <h2>Проекты, которыми гордимся</h2>
-      <p>За 12 лет — более 100 запущенных сайтов для бизнеса из разных ниш, несколько из них ниже</p>
+      <p>За 12 лет — более 100 запущенных сайтов для бизнеса из разных ниш. Ниже — часть работ, каждую можно открыть вживую</p>
+    </div>
+    <div class="case-filters reveal">
+      <button class="cf active" data-filter="all">Все</button>
+      <button class="cf" data-filter="landing">Лендинги</button>
+      <button class="cf" data-filter="info">Информационные</button>
+      <button class="cf" data-filter="corp">Корпоративные</button>
+      <button class="cf" data-filter="catalog">Каталоги</button>
+      <button class="cf" data-filter="shop">Магазины</button>
     </div>
     <div class="cases-grid">
-      <div class="case c1 reveal d1"><div class="cat">Ювелирный бренд</div><div class="cname">ЭПЛ Даймонд</div><div class="cdesc">Сайт и поддержка для федеральной ювелирной сети</div></div>
-      <div class="case c2 reveal d2"><div class="cat">Товары для дома</div><div class="cname">FANCYDOM</div><div class="cdesc">Интернет-магазин с каталогом и онлайн-заказом</div></div>
-      <div class="case c3 reveal d3"><div class="cat">Автоцентр</div><div class="cname">Eurasia Auto</div><div class="cdesc">Каталог автомобилей и заявки на подбор</div></div>
-      <div class="case c4 reveal d1"><div class="cat">Fashion</div><div class="cname">BON Kombinezon</div><div class="cdesc">Магазин одежды с адаптивной витриной</div></div>
-      <div class="case c5 reveal d2"><div class="cat">Логистика</div><div class="cname">TK-RUS</div><div class="cdesc">Корпоративный сайт транспортной компании</div></div>
-      <div class="case c6 reveal d3"><div class="cat">Сервис для питомцев</div><div class="cname">push-business.ru</div><div class="cdesc">Сайт для проекта, получившего грантовую поддержку</div></div>
+      <a class="case-card reveal" data-cat="landing" href="https://blesk-i-poryadok.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/blesk-i-poryadok-ru.webp" loading="lazy" alt="Сайт blesk-i-poryadok.ru"></div><div class="case-meta"><span class="case-domain">blesk-i-poryadok.ru</span><span class="case-tag">Лендинг</span></div></a>
+      <a class="case-card reveal" data-cat="landing" href="https://ochumelych.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/ochumelych-ru.webp" loading="lazy" alt="Сайт ochumelych.ru"></div><div class="case-meta"><span class="case-domain">ochumelych.ru</span><span class="case-tag">Лендинг</span></div></a>
+      <a class="case-card reveal" data-cat="landing" href="https://prima-merch.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/prima-merch-ru.webp" loading="lazy" alt="Сайт prima-merch.ru"></div><div class="case-meta"><span class="case-domain">prima-merch.ru</span><span class="case-tag">Лендинг</span></div></a>
+      <a class="case-card reveal" data-cat="landing" href="https://semservis.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/semservis-ru.webp" loading="lazy" alt="Сайт semservis.ru"></div><div class="case-meta"><span class="case-domain">semservis.ru</span><span class="case-tag">Лендинг</span></div></a>
+      <a class="case-card reveal" data-cat="info" href="https://axmedovlk.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/axmedovlk-ru.webp" loading="lazy" alt="Сайт axmedovlk.ru"></div><div class="case-meta"><span class="case-domain">axmedovlk.ru</span><span class="case-tag">Информационный</span></div></a>
+      <a class="case-card reveal" data-cat="info" href="https://opora.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/opora-ru.webp" loading="lazy" alt="Сайт opora.ru"></div><div class="case-meta"><span class="case-domain">opora.ru</span><span class="case-tag">Информационный</span></div></a>
+      <a class="case-card reveal" data-cat="info" href="https://buyingbusinesstravel.com.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/buyingbusinesstravel-com-ru.webp" loading="lazy" alt="Сайт buyingbusinesstravel.com.ru"></div><div class="case-meta"><span class="case-domain">buyingbusinesstravel.com.ru</span><span class="case-tag">Информационный</span></div></a>
+      <a class="case-card reveal" data-cat="info" href="https://yakutskcity.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/yakutskcity-ru.webp" loading="lazy" alt="Сайт yakutskcity.ru"></div><div class="case-meta"><span class="case-domain">yakutskcity.ru</span><span class="case-tag">Информационный</span></div></a>
+      <a class="case-card reveal" data-cat="corp" href="https://foresthouse24.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/foresthouse24-ru.webp" loading="lazy" alt="Сайт foresthouse24.ru"></div><div class="case-meta"><span class="case-domain">foresthouse24.ru</span><span class="case-tag">Корпоративный</span></div></a>
+      <a class="case-card reveal" data-cat="corp" href="https://masloff.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/masloff-ru.webp" loading="lazy" alt="Сайт masloff.ru"></div><div class="case-meta"><span class="case-domain">masloff.ru</span><span class="case-tag">Корпоративный</span></div></a>
+      <a class="case-card reveal" data-cat="corp" href="https://gis-mining.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/gis-mining-ru.webp" loading="lazy" alt="Сайт gis-mining.ru"></div><div class="case-meta"><span class="case-domain">gis-mining.ru</span><span class="case-tag">Корпоративный</span></div></a>
+      <a class="case-card reveal" data-cat="corp" href="https://aosngs.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/aosngs-ru.webp" loading="lazy" alt="Сайт aosngs.ru"></div><div class="case-meta"><span class="case-domain">aosngs.ru</span><span class="case-tag">Корпоративный</span></div></a>
+      <a class="case-card reveal" data-cat="catalog" href="https://etln-rcw.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/etln-rcw-ru.webp" loading="lazy" alt="Сайт etln-rcw.ru"></div><div class="case-meta"><span class="case-domain">etln-rcw.ru</span><span class="case-tag">Каталог</span></div></a>
+      <a class="case-card reveal" data-cat="catalog" href="https://tonybrands.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/tonybrands-ru.webp" loading="lazy" alt="Сайт tonybrands.ru"></div><div class="case-meta"><span class="case-domain">tonybrands.ru</span><span class="case-tag">Каталог</span></div></a>
+      <a class="case-card reveal" data-cat="catalog" href="https://dom-karkas55.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/dom-karkas55-ru.webp" loading="lazy" alt="Сайт dom-karkas55.ru"></div><div class="case-meta"><span class="case-domain">dom-karkas55.ru</span><span class="case-tag">Каталог</span></div></a>
+      <a class="case-card reveal" data-cat="catalog" href="https://eurasia-autocenter.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/eurasia-autocenter-ru.webp" loading="lazy" alt="Сайт eurasia-autocenter.ru"></div><div class="case-meta"><span class="case-domain">eurasia-autocenter.ru</span><span class="case-tag">Каталог</span></div></a>
+      <a class="case-card reveal" data-cat="shop" href="https://jetupack.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/jetupack-ru.webp" loading="lazy" alt="Сайт jetupack.ru"></div><div class="case-meta"><span class="case-domain">jetupack.ru</span><span class="case-tag">Магазин</span></div></a>
+      <a class="case-card reveal" data-cat="shop" href="https://bonkombinezon.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/bonkombinezon-ru.webp" loading="lazy" alt="Сайт bonkombinezon.ru"></div><div class="case-meta"><span class="case-domain">bonkombinezon.ru</span><span class="case-tag">Магазин</span></div></a>
+      <a class="case-card reveal" data-cat="shop" href="https://truckparts-chelny.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/truckparts-chelny-ru.webp" loading="lazy" alt="Сайт truckparts-chelny.ru"></div><div class="case-meta"><span class="case-domain">truckparts-chelny.ru</span><span class="case-tag">Магазин</span></div></a>
+      <a class="case-card reveal" data-cat="shop" href="https://epldiamond.ru" target="_blank" rel="noopener"><div class="case-shot"><img src="../assets/cases/epldiamond-ru.webp" loading="lazy" alt="Сайт epldiamond.ru"></div><div class="case-meta"><span class="case-domain">epldiamond.ru</span><span class="case-tag">Магазин</span></div></a>
     </div>
   </div>
 </section>
@@ -524,6 +546,6 @@
         var btn=p.querySelector('.btn'); if(btn){btn.classList.remove('btn-ghost'); btn.classList.add('btn-primary');}}}
   })();
 </script>
-<script src="../assets/js/main.js?v=11"></script>
+<script src="../assets/js/main.js?v=12"></script>
 </body>
 </html>
