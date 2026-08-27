@@ -736,8 +736,8 @@ h2{font-size:clamp(28px,4.4vw,48px)}
 .hero-badge{animation:heroUp .8s .05s both cubic-bezier(.2,.7,.3,1)}
 .hero .lead{animation:heroUp .8s .5s both cubic-bezier(.2,.7,.3,1)}
 .hero-actions{animation:heroUp .8s .68s both cubic-bezier(.2,.7,.3,1)}
+.hero .hero-h1{animation:heroUp .8s .2s both cubic-bezier(.2,.7,.3,1)}
 @keyframes heroUp{from{opacity:0;transform:translateY(18px);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
-.hero-media{transform:scale(1.04);transition:transform .5s cubic-bezier(.2,.7,.3,1)}
 
 /* --- statement-секция --- */
 .statement{padding-block:clamp(78px,12vw,150px);border-block:1px solid var(--border);background:var(--bg-2);position:relative;overflow:hidden}

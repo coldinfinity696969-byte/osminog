@@ -285,22 +285,6 @@
     } else { el.classList.add('kin-in'); }
   });
 
-  // ---- mouse-параллакс hero ----
-  var heroSec = document.querySelector('.hero');
-  var heroMedia = document.querySelector('.hero-media');
-  if (heroSec && heroMedia && !reduceM && finePointer && window.innerWidth >= 1024) {
-    var hpRaf = null;
-    heroSec.addEventListener('mousemove', function (e) {
-      var rx = (e.clientX / window.innerWidth - 0.5), ry = (e.clientY / window.innerHeight - 0.5);
-      if (hpRaf) return;
-      hpRaf = requestAnimationFrame(function () {
-        heroMedia.style.transform = 'translate3d(' + (rx * -16) + 'px,' + (ry * -12) + 'px,0) scale(1.05)';
-        hpRaf = null;
-      });
-    });
-    heroSec.addEventListener('mouseleave', function () { heroMedia.style.transform = ''; });
-  }
-
   // ---- магнитные кнопки ----
   if (!reduceM && finePointer) {
     document.querySelectorAll('.btn').forEach(function (btn) {
@@ -311,26 +295,6 @@
       });
       btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
     });
-  }
-
-  // ---- кастомный курсор-кольцо ----
-  if (!reduceM && finePointer) {
-    var ring = document.createElement('div');
-    ring.className = 'cursor-ring';
-    document.body.appendChild(ring);
-    var mx = 0, my = 0, cx = 0, cy = 0, shown = false;
-    document.addEventListener('mousemove', function (e) {
-      mx = e.clientX; my = e.clientY;
-      if (!shown) { shown = true; ring.classList.add('on'); }
-    });
-    (function ringLoop() {
-      cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2;
-      ring.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
-      requestAnimationFrame(ringLoop);
-    })();
-    var hot = 'a,button,.case-card,.cf,.faq-q,.niche,input,textarea,.pstep';
-    document.addEventListener('mouseover', function (e) { if (e.target.closest(hot)) ring.classList.add('hot'); });
-    document.addEventListener('mouseout', function (e) { if (e.target.closest(hot)) ring.classList.remove('hot'); });
   }
 
   // ---- year ----
