@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=15">
+<link rel="stylesheet" href="assets/css/style.css?v=18">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%235b8cff'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='19' font-weight='700' fill='%23070810' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 </head>
 <body data-niche="" data-featured="landing">
@@ -26,6 +26,7 @@
     <stop offset="0" stop-color="#22d3ee"/><stop offset="0.5" stop-color="#5b8cff"/><stop offset="1" stop-color="#8b5cff"/>
   </linearGradient>
 </defs></svg>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ===================== HEADER ===================== -->
 <header class="header">
@@ -63,18 +64,18 @@
 <section class="hero">
   <div class="hero-media" aria-hidden="true">
     <picture>
-      <source media="(max-width:900px)" srcset="assets/video/hero-octopus-mobile.webp?v=15">
-      <img class="hero-poster" src="assets/video/hero-octopus-poster.jpg?v=15" alt="">
+      <source media="(max-width:900px)" srcset="assets/video/hero-octopus-mobile.webp?v=18">
+      <img class="hero-poster" src="assets/video/hero-octopus-poster.jpg?v=18" alt="">
     </picture>
-    <video class="hero-video" poster="assets/video/hero-octopus-poster.jpg?v=15" muted loop playsinline preload="none">
-      <source src="assets/video/hero-octopus.mp4?v=15" type="video/mp4">
+    <video class="hero-video" poster="assets/video/hero-octopus-poster.jpg?v=18" muted loop playsinline preload="none">
+      <source src="assets/video/hero-octopus.mp4?v=18" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
   </div>
   <div class="container hero-content">
     <div class="hero-copy">
       <div class="hero-badge"><span class="dot"></span>Веб-разработка полного цикла</div>
-      <h1>Делаем сайты, которые <span class="grad-text">приводят клиентов</span> вашему бизнесу</h1>
+      <h1 class="kinetic-hero">Делаем сайты, которые <span class="grad-text">приводят клиентов</span> вашему бизнесу</h1>
       <p class="lead">Проектируем, дизайним и разрабатываем сайты под ключ — от лендинга до интернет-магазина<span class="lead-more">: индивидуальный дизайн, адаптив под все устройства, готовность к рекламе и SEO</span></p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary btn-lg">Рассчитать проект
@@ -230,23 +231,30 @@
   </div>
 </section>
 
+<!-- ===================== STATEMENT ===================== -->
+<section class="statement">
+  <div class="container">
+    <p class="statement-line kinetic">Мы не просто «делаем сайты» — мы проектируем инструменты, которые <span class="grad-text">приводят клиентов</span></p>
+  </div>
+</section>
+
 <!-- ===================== PROCESS / этапы ===================== -->
 <section class="section" id="process">
-  <div class="container">
-    <div class="section-head reveal">
+  <div class="container process-wrap">
+    <div class="process-aside">
       <span class="eyebrow">Как мы работаем</span>
-      <h2>8 этапов от идеи до запуска</h2>
+      <h2>8 этапов<br>от идеи до запуска</h2>
       <p>Прозрачный процесс, где на каждом шаге вы видите результат и согласуете его</p>
     </div>
-    <div class="steps">
-      <div class="step reveal d1"><div class="sn">01</div><h4>Анализ и бриф</h4><p>Изучаем бизнес, цели и конкурентов, снимаем требования</p></div>
-      <div class="step reveal d2"><div class="sn">02</div><h4>Прототип</h4><p>Собираем структуру и логику страниц до дизайна</p></div>
-      <div class="step reveal d3"><div class="sn">03</div><h4>Дизайн-макет</h4><p>Рисуем индивидуальный визуал под ваш бренд</p></div>
-      <div class="step reveal d4"><div class="sn">04</div><h4>Согласование</h4><p>Показываем, вносим правки, утверждаем макет</p></div>
-      <div class="step reveal d1"><div class="sn">05</div><h4>Разработка</h4><p>Кастомная вёрстка и программирование функций</p></div>
-      <div class="step reveal d2"><div class="sn">06</div><h4>Наполнение</h4><p>Тексты, фото, товары — сайт наполняется контентом</p></div>
-      <div class="step reveal d3"><div class="sn">07</div><h4>Тестирование</h4><p>Проверяем на всех устройствах и в браузерах</p></div>
-      <div class="step reveal d4"><div class="sn">08</div><h4>Запуск и поддержка</h4><p>Публикуем, подключаем аналитику, ведём после сдачи</p></div>
+    <div class="process-steps">
+      <div class="pstep reveal"><span class="psn">01</span><div class="ptxt"><h4>Анализ и бриф</h4><p>Изучаем бизнес, цели и конкурентов, снимаем требования</p></div></div>
+      <div class="pstep reveal"><span class="psn">02</span><div class="ptxt"><h4>Прототип</h4><p>Собираем структуру и логику страниц до дизайна</p></div></div>
+      <div class="pstep reveal"><span class="psn">03</span><div class="ptxt"><h4>Дизайн-макет</h4><p>Рисуем индивидуальный визуал под ваш бренд</p></div></div>
+      <div class="pstep reveal"><span class="psn">04</span><div class="ptxt"><h4>Согласование</h4><p>Показываем, вносим правки, утверждаем макет</p></div></div>
+      <div class="pstep reveal"><span class="psn">05</span><div class="ptxt"><h4>Разработка</h4><p>Кастомная вёрстка и программирование функций</p></div></div>
+      <div class="pstep reveal"><span class="psn">06</span><div class="ptxt"><h4>Наполнение</h4><p>Тексты, фото, товары — сайт наполняется контентом</p></div></div>
+      <div class="pstep reveal"><span class="psn">07</span><div class="ptxt"><h4>Тестирование</h4><p>Проверяем на всех устройствах и в браузерах</p></div></div>
+      <div class="pstep reveal"><span class="psn">08</span><div class="ptxt"><h4>Запуск и поддержка</h4><p>Публикуем, подключаем аналитику, ведём после сдачи</p></div></div>
     </div>
   </div>
 </section>
@@ -551,6 +559,6 @@
         var btn=p.querySelector('.btn'); if(btn){btn.classList.remove('btn-ghost'); btn.classList.add('btn-primary');}}}
   })();
 </script>
-<script src="assets/js/main.js?v=15"></script>
+<script src="assets/js/main.js?v=18"></script>
 </body>
 </html>

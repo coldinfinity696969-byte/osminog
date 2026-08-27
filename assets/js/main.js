@@ -243,6 +243,96 @@
     });
   }
 
+  // ============ ТИР 1: премиум-интеракции ============
+  var reduceM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer:fine)').matches;
+
+  // ---- кинетический текст (слова по очереди) ----
+  function kineticSplit(el) {
+    var nodes = Array.prototype.slice.call(el.childNodes);
+    el.textContent = '';
+    var i = 0;
+    nodes.forEach(function (node) {
+      if (node.nodeType === 3) {
+        node.textContent.split(/(\s+)/).forEach(function (p) {
+          if (p === '') return;
+          if (/^\s+$/.test(p)) { el.appendChild(document.createTextNode(p)); return; }
+          var s = document.createElement('span');
+          s.className = 'kw'; s.textContent = p;
+          s.style.animationDelay = s.style.transitionDelay = (i * 0.045) + 's';
+          el.appendChild(s); i++;
+        });
+      } else if (node.nodeType === 1) {
+        node.classList.add('kw');
+        node.style.animationDelay = node.style.transitionDelay = (i * 0.045) + 's';
+        el.appendChild(node); i++;
+      }
+    });
+  }
+  var heroH1 = document.querySelector('.kinetic-hero');
+  if (heroH1 && !reduceM) {
+    kineticSplit(heroH1);                       // hero: CSS-анимация авто-играет
+    setTimeout(function () { heroH1.classList.add('kin-safe'); }, 1600); // страховка видимости
+  }
+  document.querySelectorAll('.kinetic').forEach(function (el) {
+    if (reduceM) return;
+    kineticSplit(el);
+    if ('IntersectionObserver' in window) {
+      var o = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) { if (e.isIntersecting) { el.classList.add('kin-in'); o.unobserve(el); } });
+      }, { threshold: 0.25 });
+      o.observe(el);
+    } else { el.classList.add('kin-in'); }
+  });
+
+  // ---- mouse-параллакс hero ----
+  var heroSec = document.querySelector('.hero');
+  var heroMedia = document.querySelector('.hero-media');
+  if (heroSec && heroMedia && !reduceM && finePointer && window.innerWidth >= 1024) {
+    var hpRaf = null;
+    heroSec.addEventListener('mousemove', function (e) {
+      var rx = (e.clientX / window.innerWidth - 0.5), ry = (e.clientY / window.innerHeight - 0.5);
+      if (hpRaf) return;
+      hpRaf = requestAnimationFrame(function () {
+        heroMedia.style.transform = 'translate3d(' + (rx * -16) + 'px,' + (ry * -12) + 'px,0) scale(1.05)';
+        hpRaf = null;
+      });
+    });
+    heroSec.addEventListener('mouseleave', function () { heroMedia.style.transform = ''; });
+  }
+
+  // ---- магнитные кнопки ----
+  if (!reduceM && finePointer) {
+    document.querySelectorAll('.btn').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - (r.left + r.width / 2), y = e.clientY - (r.top + r.height / 2);
+        btn.style.transform = 'translate(' + (x * 0.22) + 'px,' + (y * 0.35) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+    });
+  }
+
+  // ---- кастомный курсор-кольцо ----
+  if (!reduceM && finePointer) {
+    var ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(ring);
+    var mx = 0, my = 0, cx = 0, cy = 0, shown = false;
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      if (!shown) { shown = true; ring.classList.add('on'); }
+    });
+    (function ringLoop() {
+      cx += (mx - cx) * 0.2; cy += (my - cy) * 0.2;
+      ring.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+      requestAnimationFrame(ringLoop);
+    })();
+    var hot = 'a,button,.case-card,.cf,.faq-q,.niche,input,textarea,.pstep';
+    document.addEventListener('mouseover', function (e) { if (e.target.closest(hot)) ring.classList.add('hot'); });
+    document.addEventListener('mouseout', function (e) { if (e.target.closest(hot)) ring.classList.remove('hot'); });
+  }
+
   // ---- year ----
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
